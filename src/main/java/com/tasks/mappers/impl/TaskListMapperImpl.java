@@ -45,7 +45,7 @@ public class TaskListMapperImpl implements TaskListMapper {
 
     int count = Optional.ofNullable(taskList.getTasks()).map(List::size).orElse(0);
 
-    double progress = calculateTaskListProgress(taskList.getTasks());
+    Double progress = calculateTaskListProgress(taskList.getTasks());
 
     List<TaskDto> taskListDto =
         Optional.ofNullable(taskList.getTasks())
@@ -65,7 +65,7 @@ public class TaskListMapperImpl implements TaskListMapper {
   }
 
   private Double calculateTaskListProgress(List<Task> tasks) {
-    if (null == tasks) {
+    if (null == tasks || tasks.isEmpty()) {
       return null;
     }
 
